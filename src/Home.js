@@ -3,11 +3,11 @@ import Loading from './loading';
 import useFetch from './useFetch';
 
 const Home = () => {
-  const { data:blogs,isPending,error}= useFetch("https://mocki.io/v1/6915132f-b368-42da-8dfe-ed813421b3ab")
+  const { data:blogs,isPending,error}= useFetch(" http://localhost:7001/blogs")
 
     return (
         <div className="home">
-            {error && <div className='err'><img src='/image/err=-404.png' alt='failed to fetch'/></div>}
+            {error && <div className='err'><img src='/image/err=-404.png' alt='failed to'/></div>}
             {isPending && <Loading/>}
            {blogs && <Bloglist blogs={blogs} title="All Blogs!" />}
         </div>
