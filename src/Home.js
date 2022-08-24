@@ -3,7 +3,7 @@ import Loading from './loading';
 import useFetch from './useFetch';
 
 const Home = () => {
-  const { data:blogs,isPending,error}= useFetch(" http://localhost:7001/blogs")
+  const { data:blogs,isPending,error}= useFetch("https://mocki.io/v1/6915132f-b368-42da-8dfe-ed813421b3ab")
 
     return (
         <div className="home">
