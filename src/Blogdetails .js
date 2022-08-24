@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
+import Loading from "./loading";
 import useFetch from "./useFetch";
 
 
@@ -16,13 +17,14 @@ const BlogDetails = () => {
     }
     return ( 
         <div className="blog-details">
-            {isPending && <div>Loading</div>}
-            {error && <div>{error}</div>}
+            {isPending && <Loading/>}
+            {error && <div className="err"><img src='/image/err=-404.png' alt="failed to fetch"/></div>}
             {blogs && (
                 <article>
                    
                     <h2>{blogs.title}</h2>
-                    <p>written by{blogs.author}</p>
+                    <p><em>written by</em>{blogs.author}</p>
+                    <p><em>Sub-category:</em> {blogs.blogCategory}</p>
                     <div>{blogs.body}</div>
                     <button onClick={handleClick}>delete</button>
                 </article>

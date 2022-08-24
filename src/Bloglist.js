@@ -15,7 +15,8 @@ const Bloglist = ({blogs,title, handleDelete}) => {
                 
                 <div>
                 <h2>{blogs.title}</h2>
-                <p>written by {blogs.author}</p>
+                <p><em>written by</em> {blogs.author}</p>
+                <p><em>Sub-category: </em>{blogs.blogCategory}</p>
                 </div>
                 </Link>
                 

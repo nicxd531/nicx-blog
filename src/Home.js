@@ -1,4 +1,5 @@
 import Bloglist from './Bloglist';
+import Loading from './loading';
 import useFetch from './useFetch';
 
 const Home = () => {
@@ -6,8 +7,8 @@ const Home = () => {
 
     return (
         <div className="home">
-            {error && <div>{error}</div>}
-            {isPending && <div>Loading....</div>}
+            {error && <div className='err'><img src='/image/err=-404.png' alt='failed to fetch'/></div>}
+            {isPending && <Loading/>}
            {blogs && <Bloglist blogs={blogs} title="All Blogs!" />}
         </div>
     );

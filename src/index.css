@@ -18,7 +18,7 @@ body {
   border-bottom: 1px solid #f2f2f2;
 }
 .navbar h1 {
-  color: #ebbb1c;
+  color: #feb60a;
 }
 .navbar .links {
   margin-left: auto;
@@ -29,12 +29,15 @@ body {
   padding: 6px;
 }
 .navbar a:hover {
-  color: #ebbb1c;
+  color: #feb60a;
 }
 .content {
   max-width: 600px;
   margin: 40px auto;
   padding: 20px;
+}
+.home {
+  height: 90vh;
 }
 /*===================================
             blog preview/list
@@ -49,7 +52,7 @@ body {
 }
 .blog-preview h2 {
   font-size: 20px;
-  color: #ebbb1c;
+  color: #feb60a;
   margin-bottom: 8px;
 }
 .blog-preview a {
@@ -60,21 +63,28 @@ body {
 =========================*/
 .blog-details h2 {
   font-size: 20px;
-  color: #ebbb1c;
+  color: #feb60a;
   margin-bottom: 10px;
 }
 .blog-details div {
   margin: 20px 0;
 }
+.blog-details {
+  height: 100vh;
+}
 .blog-details button {
-  background: #ebbb1c;
+  background: #feb60a;
   color: #fff;
   border: 0;
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
 }
-
+em {
+  font-weight: bold;
+  text-decoration: none;
+  font-style: normal;
+}
 /*====================================
         create new blog form
 ====================================*/
@@ -83,13 +93,16 @@ body {
   margin: 0 auto;
   text-align: center;
 }
+.create * {
+  border-radius: 8px;
+}
 .create label {
   text-align: left;
   display: block;
 }
 .create h2 {
   font-size: 20px;
-  color: #ebbb1c;
+  color: #feb60a;
   margin-bottom: 30px;
 }
 .create input,
@@ -103,10 +116,117 @@ body {
   display: block;
 }
 .create button {
-  background: #ebbb1c;
+  background: #feb60a;
   color: #fff;
   border: 0;
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
+}
+.create textarea {
+  height: 220px;
+  resize: none;
+}
+/*===================================
+             Loading 
+======================================*/
+.loading {
+  margin-top: 30%;
+  height: 40vh;
+}
+:root {
+  --yellow: #feb60a;
+  --red: #feb60a;
+  --blue: #feb60a;
+  --violet: #feb60a;
+}
+div.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading div > div {
+  width: 3vw;
+  height: 3vw;
+  border-radius: 100%;
+  margin: 2vw;
+  background-image: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  animation: bounce 1.5s 0.5s linear infinite;
+}
+.yellow {
+  background-color: var(--yellow);
+}
+
+.red {
+  background-color: var(--red);
+  animation-delay: 0.1s;
+}
+
+.blue {
+  background-color: var(--blue);
+  animation-delay: 0.2s;
+}
+
+.violet {
+  background-color: var(--violet);
+  animation-delay: 0.3s;
+}
+
+@keyframes bounce {
+  0%,
+  50%,
+  100% {
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  25% {
+    transform: scale(0.6);
+    filter: blur(3px);
+  }
+  75% {
+    filter: blur(3px);
+    transform: scale(1.4);
+  }
+}
+/*===================================
+            footer style
+======================================*/
+
+.footer {
+  display: flex;
+  border-top: 2px solid #f2f2f2;
+  max-width: 600px;
+  align-items: center;
+  margin: 0 auto;
+}
+.footer a {
+  text-decoration: none;
+}
+.f-content {
+  margin: 20px;
+
+  width: 100%;
+}
+.copyright {
+  float: left;
+  font-size: 10px;
+  margin-right: 10px;
+}
+.credits {
+  float: right;
+  font-size: 10px;
+  margin-left: 10px;
+}
+.err img {
+  width: 50vh;
+  margin-left: 25%;
+  margin-top: 15%;
+}
+.err {
+  width: 100%;
+  margin: auto 0;
 }

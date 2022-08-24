@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
 import Create from './Create';
 import BlogDetails from './Blogdetails ';
+import Footer from './footer';
 
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
               <Route path='/blogs/:id' element={<BlogDetails/>}></Route>
             </Routes>
         </div>
+        <Footer/>
       </div>
     </Router>
   );

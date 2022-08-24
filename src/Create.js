@@ -4,13 +4,14 @@ import { useNavigate } from "react-router-dom";
 const Create = () => {
       const [title, setTitle]=useState('');
       const [body, setBody]=useState('');
-      const [author, setAuthor]=useState('mario');
+      const [author, setAuthor]=useState(' ');
+      const [blogCategory, setBlogCategory]=useState('technology');
       const [isPending, setIsPending]=useState(false);
       const history = useNavigate();
 
       const handleSubmit =(e)=>{
         e.preventDefault()
-        const blog={title ,body, author};
+        const blog={title ,body,author, blogCategory};
          setIsPending(true);
         
         fetch(' http://localhost:7001/blogs', {
@@ -36,6 +37,13 @@ const Create = () => {
                 value={title}
                 onChange={(e)=>setTitle(e.target.value)}
                 />
+                <label>Autor</label>
+                <input
+                type="text"
+                required 
+                value={author}
+                onChange={(e)=>setAuthor(e.target.value)}
+                />
                 <label>Blog Body</label>
                 <textarea 
                 required
@@ -44,8 +52,8 @@ const Create = () => {
                 ></textarea>
                 <label>Blog category</label>
                 <select
-                value={author}
-                onChange={(e)=>setAuthor(e.target.value)}
+                value={blogCategory}
+                onChange={(e)=>setBlogCategory(e.target.value)}
                  >
                     <option value="technology">technology</option>
                     <option value="facts">facts</option>
