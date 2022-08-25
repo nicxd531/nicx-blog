@@ -7,7 +7,7 @@ const Home = () => {
 
     return (
         <div className="home">
-            {error && <div className='err'><img src='/image/err=-404.png' alt='failed to'/></div>}
+            {error && <div className='err'><img src='/image/err=-404.png' alt='failed'/></div>}
             {isPending && <Loading/>}
            {blogs && <Bloglist blogs={blogs} title="All Blogs!" />}
         </div>
