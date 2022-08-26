@@ -18,7 +18,7 @@ const BlogDetails = () => {
     return ( 
         <div className="blog-details">
             {isPending && <Loading/>}
-            {error && <div className="err"><img src='/image/err=-404.png' alt="failed to fetch"/></div>}
+            {error && <div className="err"><img src='/image/err404.png' alt="failed to fetch"/></div>}
             {blogs && (
                 <article>
                    
