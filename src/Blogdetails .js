@@ -5,11 +5,11 @@ import useFetch from "./useFetch";
 
 const BlogDetails = () => {
     const {id}= useParams();
-    const {data:blogs , error, isPending} = useFetch("http://localhost:7001/blogs/" + id)
+    const {data:blogs , error, isPending} = useFetch("https://my-json-server.typicode.com/nicxd531/jsonS/blogs/" + id)
     blogs && console.log(blogs)
     const navi =useNavigate()
     const handleClick =()=>{
-        fetch("http://localhost:7001/blogs/" +blogs.id,{
+        fetch("https://my-json-server.typicode.com/nicxd531/jsonS/blogs" +blogs.id,{
             method:'DELETE'
         })
         .then(()=>{

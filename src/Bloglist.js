@@ -7,8 +7,8 @@ const Bloglist = ({blogs,title, handleDelete}) => {
         <h2>{title}</h2>
         <div className="blog-list">
             
- 
-            {blogs.map((blogs)=> (
+
+           {blogs && blogs.map((blogs)=> (
             <div className="blog-preview" key={blogs.id}>
                 <Link to={`/blogs/${blogs.id}`}>
                
