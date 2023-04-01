@@ -1,13 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Fasthand&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fasthand&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap');
+
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'IBM Plex Serif', serif;
 }
 /*===================================
               base styles
 ======================================*/
 * {
   margin: 0;
-  font-family: helvetica;
+  font-family: 'IBM Plex Serif', serif;
   color: #333;
+}
+
+a {
+  color:#111111 !important;
 }
 .navbar {
   padding: 20px;
@@ -16,9 +23,11 @@ body {
   max-width: 600px;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
+  position: sticky;
 }
 .navbar h1 {
   color: #feb60a;
+  font-family: 'Fasthand', "cursive";
 }
 .navbar .links {
   margin-left: auto;
@@ -29,15 +38,18 @@ body {
   padding: 6px;
 }
 .navbar a:hover {
-  color: #feb60a;
+  color: #feb60a !important;
 }
 .content {
   max-width: 600px;
-  margin: 40px auto;
+  margin: 0 auto;
   padding: 20px;
 }
 .home {
   height: 90vh;
+}
+.faq{
+  margin-top: 40px;
 }
 /*===================================
             blog preview/list
@@ -114,6 +126,7 @@ em {
   border: 1px solid #ddd;
   box-sizing: border-box;
   display: block;
+  outline: none;
 }
 .create button {
   background: #feb60a;
@@ -131,7 +144,9 @@ em {
              Loading 
 ======================================*/
 .loading {
-  margin-top: 30%;
+  margin: 0 auto;
+  margin-top: 30vh;
+  width: 80%;
   height: 40vh;
 }
 :root {
@@ -146,8 +161,8 @@ div.container {
   align-items: center;
 }
 .loading div > div {
-  width: 3vw;
-  height: 3vw;
+  width: 5vw;
+  height: 5vw;
   border-radius: 100%;
   margin: 2vw;
   background-image: linear-gradient(
@@ -197,30 +212,43 @@ div.container {
 ======================================*/
 
 .footer {
-  display: flex;
   border-top: 2px solid #f2f2f2;
-  max-width: 600px;
-  align-items: center;
-  margin: 0 auto;
 }
 .footer a {
   text-decoration: none;
 }
-.f-content {
-  margin: 20px;
 
-  width: 100%;
-}
-.copyright {
-  float: left;
-  font-size: 10px;
-  margin-right: 10px;
-}
-.credits {
-  float: right;
-  font-size: 10px;
-  margin-left: 10px;
-}
 .err img {
+  margin-top: 20vh;
   width: 100%;
+}
+
+/*======================= break point============================ */
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+.App{
+  height: fit-content;
+}
+/* ================Home page========================= */
+.err img {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.home {
+  height: fit-content;
+}
+/* ================loading========================= */
+.loading {
+  margin-top: 30vh;
+  width: 50%;
+  height: 40vh;
+}
+.loading div > div {
+  width: 2vw;
+  height: 2vw;
+  border-radius: 100%;
+  margin: 1vw;
+  
+}
 }

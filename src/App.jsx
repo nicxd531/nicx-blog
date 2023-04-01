@@ -4,12 +4,13 @@ import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
 import Create from './Create';
 import BlogDetails from './Blogdetails ';
 import Footer from './footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  
+  // base for every components and re-direction 
   return (
     <Router>
-      <div className="App">
+      <div className="App ">
         <Navbar/>
         <div className="content">
             <Routes>

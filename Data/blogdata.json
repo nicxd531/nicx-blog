@@ -2,7 +2,7 @@
   "blogs": [
     {
       "title": "my new blog",
-      "imiage": "/image/beautiful_blake_lively_is_wearing_blue_dress_standing_in_blur_people_background_hd_girls-1366x768.jpg",
+      "image": "/image/beautiful_blake_lively_is_wearing_blue_dress_standing_in_blur_people_background_hd_girls-1366x768.jpg",
       "body": "Pellentesque in ipsum id orci porta dapibus. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Pellentesque in ipsum id orci porta dapibus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.",
       "author": "mario",
       "blogCategory": "tech",
@@ -10,7 +10,7 @@
     },
     {
       "title": "nicx ola ",
-      "imiage": "/image/junior-moran-08yuHdEW6Lc-unsplash.jpg",
+      "image": "/image/junior-moran-08yuHdEW6Lc-unsplash.jpg",
       "body": "alot",
       "author": "mario",
       "blogCategory": "tech",
