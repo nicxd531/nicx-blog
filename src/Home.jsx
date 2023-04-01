@@ -10,7 +10,7 @@ const Home = () => {
   const [Alert, setAlert] = useState(true)
   
   const { data:blogs,isPending,error}= useFetch("https://my-json-server.typicode.com/nicxd531/jsonS/blogs")
-  console.log(Alert)
+  
 
   useEffect(() => {
     const timer = setTimeout(() => {
