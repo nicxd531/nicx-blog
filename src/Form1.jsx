@@ -47,9 +47,9 @@ const Form1 = ({handleSubmit,title,setTitle,author,setAuthor,blogCategory,setBlo
 
                 <div>
                     <label>other categories</label>
-                    <div key={`inline-checkbox`} className="d-flex flex-row w-75"  onChange={(e)=>setBlogCategory(e.target.value)}>
+                    <div key={`inline-checkbox`} className="d-flex flex-row "  onChange={(e)=>setBlogCategory(e.target.value)}>
                         <Form.Check
-                            className="d-flex  justify-content-around ms-4 align-items-center"
+                            className="d-flex  justify-content-around ms-3 align-items-center"
                             inline
                             label="React"
                             name="group1"
@@ -58,7 +58,7 @@ const Form1 = ({handleSubmit,title,setTitle,author,setAuthor,blogCategory,setBlo
                             id={`inline-checkbox-1`}
                         />
                         <Form.Check
-                            className="d-flex justify-content-center ms-4 align-items-center"
+                            className="d-flex justify-content-center ms-2 align-items-center"
                             inline
                             label="Javascript"
                             name="group1"
@@ -67,7 +67,7 @@ const Form1 = ({handleSubmit,title,setTitle,author,setAuthor,blogCategory,setBlo
                             id={`inline-checkbox-2`}
                         />
                         <Form.Check
-                            className="d-flex justify-content-center ms-4 align-items-center"
+                            className="d-flex justify-content-center ms-2 align-items-center"
                             inline
                             value="Html"
                             label="Html"
@@ -76,7 +76,7 @@ const Form1 = ({handleSubmit,title,setTitle,author,setAuthor,blogCategory,setBlo
                             id={`inline-checkbox-3`}
                         />
                         <Form.Check
-                            className="d-flex justify-content-center ms-4 align-items-center"
+                            className="d-flex justify-content-center ms-2 align-items-center"
                             inline
                             label="Css"
                             name="group1"
