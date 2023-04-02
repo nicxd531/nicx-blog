@@ -9,8 +9,9 @@ import { useEffect, useState } from 'react';
 const Home = () => {
   const [Alert, setAlert] = useState(true)
   
-  const { data:blogs,isPending,error}= useFetch("https://my-json-server.typicode.com/nicxd531/jsonS/blogs")
-  
+  const { data:blogs,isPending,error}= useFetch("https://nordic-rose-backend-production.up.railway.app/api/blogs")
+
+ 
 
   useEffect(() => {
     const timer = setTimeout(() => {

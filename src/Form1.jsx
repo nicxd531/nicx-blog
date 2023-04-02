@@ -1,11 +1,13 @@
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
+import moment from "moment/moment";
 
-const Form1 = ({handleSubmit,title,setTitle,author,setAuthor,blogCategory,setBlogCategory,body,setBody,isPending}) => {
-
+const Form1 = ({handleSubmit,title,setTitle,author,setAuthor,blogCategory,setBlogCategory,body,setBody,isPending,setIsDate,date1}) => {
+//   moment.js library used for getting present time inwhich the blog was sent 
+const nowDate = moment().format('MMMM Do YYYY, h:mm:ss a');
     return ( 
         <form onSubmit={handleSubmit}>
-  
+            <h1 className='mb-5'>{nowDate}</h1>
                 <FloatingLabel
                 controlId="floatingInput"
                 label="Blog Title"
@@ -30,7 +32,11 @@ const Form1 = ({handleSubmit,title,setTitle,author,setAuthor,blogCategory,setBlo
                     type="text" 
                     placeholder="blog title" />
                 </FloatingLabel>
-
+                <input 
+                required
+                value={date1}
+                onChange={(e)=>setIsDate(e.target.value)}
+                type='date'/>
                 <Form.Select 
                 className="mt-4"
                 value={blogCategory}

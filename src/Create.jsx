@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import moment from "moment/moment";
 import Form1 from "./Form1";
 
 
@@ -11,22 +10,21 @@ const Create = () => {
       const [author, setAuthor]=useState('');
       const [blogCategory, setBlogCategory]=useState('React');
       const [isPending, setIsPending]=useState(false);
-      const [Date, setIsDate]=useState("");
+      const [date, setIsDate]=useState('');
 
       const history = useNavigate();
 
-    //   moment.js library used for getting present time inwhich the blog was sent 
-      const nowDate = moment().format('MMMM Do YYYY, h:mm:ss a');
 
-      console.log(nowDate)
 
       const handleSubmit =(e)=>{
         e.preventDefault()
-        setIsDate(nowDate)
-        const blog={title ,body,author, blogCategory,Date};
-         setIsPending(true);
         
-        fetch('https://my-json-server.typicode.com/nicxd531/jsonS/blogs', {
+        const blog={title ,body,author,date};
+         setIsPending(true);
+         console.log(date)
+         console.log(blog)
+        
+        fetch('https://nordic-rose-backend-production.up.railway.app/api/blogs', {
             method:'POST',
             headers: {"content-Type":"application/json"},
             body: JSON.stringify(blog)
@@ -53,6 +51,8 @@ const Create = () => {
                 body={body}
                 setBody={setBody}
                 isPending={isPending}
+                setIsDate={setIsDate}
+                date1={date}
             />
         </div>
 
