@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Form1 from "./Form1";
+import { useMutation } from '@apollo/client';
+import { gql } from 'graphql-tag';
 
 
 const Create = () => {
@@ -9,8 +11,33 @@ const Create = () => {
       const [body, setBody]=useState('');
       const [author, setAuthor]=useState('');
       const [blogCategory, setBlogCategory]=useState('React');
-      const [isPending, setIsPending]=useState(false);
+
       const [date, setIsDate]=useState('');
+
+      const [createArticle] = useMutation(gql`
+      mutation {
+        createBlog(
+          data:{
+            author: "John Doe",
+            body: "Lorem ipsum dolor sit amet...",
+            image: "https://example.com/my-image.jpg",
+            date: "2022-03-31T15:25:00.000Z",
+          }
+        ){
+          data{
+            attributes{
+            title
+            author
+            body
+            image
+            date,   
+                
+              }
+          
+            }
+          }
+        }
+  `);
 
       const history = useNavigate();
 
@@ -18,21 +45,8 @@ const Create = () => {
 
       const handleSubmit =(e)=>{
         e.preventDefault()
+        createArticle({ variables: { title, body} });
         
-        const blog={title ,body,author,date};
-         setIsPending(true);
-         console.log(date)
-         console.log(blog)
-        
-        fetch('https://nordic-rose-backend-production.up.railway.app/api/blogs', {
-            method:'POST',
-            headers: {"content-Type":"application/json"},
-            body: JSON.stringify(blog)
-        })
-        .then(()=>{
-            console.log('new blog added');
-            setIsPending(false)
-        })
         history('/');
 
       }
@@ -50,7 +64,7 @@ const Create = () => {
                 setBlogCategory={setBlogCategory}
                 body={body}
                 setBody={setBody}
-                isPending={isPending}
+                // isPending={isPending}
                 setIsDate={setIsDate}
                 date1={date}
             />

@@ -106,8 +106,8 @@ const nowDate = moment().format('MMMM Do YYYY, h:mm:ss a');
                 </FloatingLabel>
 
                 
-                {!isPending && <button className="btn"> Add Blog </button>}
-                {isPending && <button  className="btn" disabled> Adding blog.... </button>}
+                { <button className="btn"> Add Blog </button>}
+                
 
             </form>
      );
