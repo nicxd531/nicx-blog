@@ -43,10 +43,11 @@ query GetBlogs {
     const timer = setTimeout(() => {
       setAlert(false)
     }, 5000);
+   
 
     // Cleanup function to clear the timer if the component is unmounted or re-rendered before the timer expires
-    return () => clearTimeout(timer);
-  }, [])
+    return () => {clearTimeout(timer);}
+  }, [data])
   
     return (
         <div className="home">

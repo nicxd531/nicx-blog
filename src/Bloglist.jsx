@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 
 const Bloglist = ({title,blogs1}) => {
-    console.log(blogs1)
+
 
 
     return ( 
@@ -12,7 +12,7 @@ const Bloglist = ({title,blogs1}) => {
         <div className="blog-list">
             
            {blogs1.blogs.data && blogs1.blogs.data.map((blogs)=> {
-            console.log(blogs)
+            
            return( 
                 <div className="blog-preview" key={blogs.id}>
                     <Link to={`/blogs/${blogs.id}`}>

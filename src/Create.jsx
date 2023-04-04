@@ -1,55 +1,83 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Form1 from "./Form1";
-import { useMutation } from '@apollo/client';
-import { gql } from 'graphql-tag';
+
 
 
 const Create = () => {
     // states for every instance needed 
-      const [title, setTitle]=useState('');
-      const [body, setBody]=useState('');
-      const [author, setAuthor]=useState('');
+      const [title, setTitle]=useState("");
+      const [body, setBody]=useState("");
+      const [author, setAuthor]=useState( "");
       const [blogCategory, setBlogCategory]=useState('React');
+      const [date, setIsDate]=useState("");
+      const [data, setData]=useState(null);
+     
+      
 
-      const [date, setIsDate]=useState('');
-
-      const [createArticle] = useMutation(gql`
-      mutation {
-        createBlog(
-          data:{
-            author: "John Doe",
-            body: "Lorem ipsum dolor sit amet...",
-            image: "https://example.com/my-image.jpg",
-            date: "2022-03-31T15:25:00.000Z",
-          }
-        ){
-          data{
-            attributes{
-            title
-            author
-            body
-            image
-            date,   
-                
-              }
-          
-            }
-          }
-        }
-  `);
-
+      // variable to get previous history 
       const history = useNavigate();
 
+      // Define the URL for your Strapi instance and the content type you want to create a post for
+      const apiUrl = 'https://nordic-rose-backend-production.up.railway.app/api/blogs';
+     
+      
+      // Define the data for your new post
+      
+        
 
+
+        var mainData = {
+     
+          data: {
+          title: title.toString(),
+        body: body.toString(),
+        author: author.toString(),
+        date: date.toString()
+          }
+        };
 
       const handleSubmit =(e)=>{
         e.preventDefault()
-        createArticle({ variables: { title, body} });
+        setData(mainData)
+
+         console.log(data)
+
+        data && setTimeout(() => {
+
+
+  
+        // Use the fetch API to make a POST request to create a new post
+           fetch(`${apiUrl}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          })
+            .then(response => response.json())
+            .then(data => {
+              // Do something with the data, such as displaying a success message
+              console.log('Post created successfully:', data);
+            })
+            .catch(error => {
+              // Handle any errors that occur during the request
+              console.error(error);
+            });
+            
         
-        history('/');
+
+        // last history 
+         history('/');
+        // Reload the current page
+     window.location.reload();
+    }, 5000); // Wait for 5 seconds before executing the code
+  
 
       }
+
+    
+  
     return ( 
         <div className="create">
             <h2>Add a new blog</h2>
