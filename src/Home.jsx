@@ -42,7 +42,7 @@ query GetBlogs {
   useEffect(() => {
     const timer = setTimeout(() => {
       setAlert(false)
-    }, 5000);
+    }, 8000);
    
 
     // Cleanup function to clear the timer if the component is unmounted or re-rendered before the timer expires

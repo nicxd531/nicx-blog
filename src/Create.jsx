@@ -11,7 +11,8 @@ const Create = () => {
       const [author, setAuthor]=useState( "");
       const [blogCategory, setBlogCategory]=useState('React');
       const [date, setIsDate]=useState("");
-      const [data, setData]=useState(null);
+      const [isLoading, setIsLoading] = useState(false);
+      // const [data, setData]=useState(null);
      
       
 
@@ -37,46 +38,76 @@ const Create = () => {
           }
         };
 
-      const handleSubmit =(e)=>{
-        e.preventDefault()
-        setData(mainData)
+    //   const handleSubmit =(e)=>{
+    //     e.preventDefault()
+        
 
-         console.log(data)
+    //      console.log(mainData)
 
-        data && setTimeout(() => {
+        
 
 
   
-        // Use the fetch API to make a POST request to create a new post
-           fetch(`${apiUrl}`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-          })
-            .then(response => response.json())
-            .then(data => {
-              // Do something with the data, such as displaying a success message
-              console.log('Post created successfully:', data);
-            })
-            .catch(error => {
-              // Handle any errors that occur during the request
-              console.error(error);
-            });
+    //     // Use the fetch API to make a POST request to create a new post
+    //        fetch(`${apiUrl}`, {
+    //         method: 'POST',
+    //         headers: {
+    //           'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(mainData)
+    //       })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //           // Do something with the data, such as displaying a success message
+    //           console.log('Post created successfully:', data);
+    //         })
+    //         .catch(error => {
+    //           // Handle any errors that occur during the request
+    //           console.error(error);
+    //         });
             
         
 
-        // last history 
-         history('/');
-        // Reload the current page
-     window.location.reload();
-    }, 5000); // Wait for 5 seconds before executing the code
+    //     // last history 
+    //      history('/');
+    //     // Reload the current page
+    //  window.location.reload();
+    
   
 
-      }
+    //   }
 
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      setIsLoading(true);
     
+      // fixed the double click issue by passing main data directly rather than setting data using state
+      fetch(`${apiUrl}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(mainData)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Do something with the data, such as displaying a success message
+        console.log('Post created successfully:', data);
+        setIsLoading(false);
+        history('/');
+        // Reload the current page
+        window.location.reload();
+      })
+      .catch(error => {
+        setIsLoading(false);
+        console.error(error);
+      });
+    };
   
     return ( 
         <div className="create">
@@ -92,7 +123,7 @@ const Create = () => {
                 setBlogCategory={setBlogCategory}
                 body={body}
                 setBody={setBody}
-                // isPending={isPending}
+                isPending={isLoading}
                 setIsDate={setIsDate}
                 date1={date}
             />

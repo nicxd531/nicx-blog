@@ -3,8 +3,10 @@ import Form from 'react-bootstrap/Form';
 import moment from "moment/moment";
 
 const Form1 = ({handleSubmit,title,setTitle,author,setAuthor,blogCategory,setBlogCategory,body,setBody,isPending,setIsDate,date1}) => {
+
 //   moment.js library used for getting present time inwhich the blog was sent 
 const nowDate = moment().format('MMMM Do YYYY, h:mm:ss a');
+
     return ( 
         <form onSubmit={handleSubmit}>
             <h1 className='mb-5'>{nowDate}</h1>
@@ -50,7 +52,6 @@ const nowDate = moment().format('MMMM Do YYYY, h:mm:ss a');
                     <option value="Git">Git</option>
                     <option value="Github">Github</option>
                 </Form.Select>
-
                 <div>
                     <label>other categories</label>
                     <div key={`inline-checkbox`} className="d-flex flex-row "  onChange={(e)=>setBlogCategory(e.target.value)}>
@@ -92,8 +93,6 @@ const nowDate = moment().format('MMMM Do YYYY, h:mm:ss a');
                         />
                     </div>
                 </div>
-
-
                 <FloatingLabel className="mt-4" controlId="floatingTextarea2" label="blog body">
                     <Form.Control
                     required
@@ -104,11 +103,8 @@ const nowDate = moment().format('MMMM Do YYYY, h:mm:ss a');
                     style={{ height: '200px' }}
                     />
                 </FloatingLabel>
-
-                
-                { <button className="btn"> Add Blog </button>}
-                
-
+                {!isPending && <button className="btn"> Add Blog </button>}
+                {isPending && <button  className="btn" disabled> Adding blog.... </button>}
             </form>
      );
 }
