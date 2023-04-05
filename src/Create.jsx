@@ -12,9 +12,8 @@ const Create = () => {
       const [blogCategory, setBlogCategory]=useState('React');
       const [date, setIsDate]=useState("");
       const [isLoading, setIsLoading] = useState(false);
-      // const [data, setData]=useState(null);
-     
-      
+      const [checkedValues, setCheckedValues] = useState([]);
+      const [imageFile, setImageFile] = useState(null);
 
       // variable to get previous history 
       const history = useNavigate();
@@ -24,58 +23,31 @@ const Create = () => {
      
       
       // Define the data for your new post
-      
+
+      const handleCheckboxChange = (event) => {
+        const value = Number(event.target.value); // convert to number
+        const checked = event.target.checked;
         
-
-
+        if (checked) {
+          // check if value already exists in array
+          if (!checkedValues.includes(value)) {
+            setCheckedValues([...checkedValues, value]); // add to array
+          }
+        } else {
+          const newValues = checkedValues.filter((item) => item !== value); // remove from array
+          setCheckedValues(newValues);
+        }
+      };
         var mainData = {
-     
           data: {
           title: title.toString(),
         body: body.toString(),
         author: author.toString(),
-        date: date.toString()
+        date: date.toString(),
+        categories: checkedValues, // an array of category IDs
           }
         };
 
-    //   const handleSubmit =(e)=>{
-    //     e.preventDefault()
-        
-
-    //      console.log(mainData)
-
-        
-
-
-  
-    //     // Use the fetch API to make a POST request to create a new post
-    //        fetch(`${apiUrl}`, {
-    //         method: 'POST',
-    //         headers: {
-    //           'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(mainData)
-    //       })
-    //         .then(response => response.json())
-    //         .then(data => {
-    //           // Do something with the data, such as displaying a success message
-    //           console.log('Post created successfully:', data);
-    //         })
-    //         .catch(error => {
-    //           // Handle any errors that occur during the request
-    //           console.error(error);
-    //         });
-            
-        
-
-    //     // last history 
-    //      history('/');
-    //     // Reload the current page
-    //  window.location.reload();
-    
-  
-
-    //   }
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -96,10 +68,14 @@ const Create = () => {
         return response.json();
       })
       .then(data => {
+
         // Do something with the data, such as displaying a success message
         console.log('Post created successfully:', data);
         setIsLoading(false);
+
+        // go back to previous page 
         history('/');
+
         // Reload the current page
         window.location.reload();
       })
@@ -108,24 +84,27 @@ const Create = () => {
         console.error(error);
       });
     };
-  
+  console.log(checkedValues)
     return ( 
         <div className="create">
             <h2>Add a new blog</h2>
             
             <Form1
-                handleSubmit={handleSubmit}
-                title={title}
-                setTitle={setTitle}
-                author={author}
-                setAuthor={setAuthor}
-                blogCategory={blogCategory}
-                setBlogCategory={setBlogCategory}
-                body={body}
-                setBody={setBody}
-                isPending={isLoading}
-                setIsDate={setIsDate}
-                date1={date}
+              checkedValues={checkedValues}
+              handleCheckboxChange={handleCheckboxChange}
+              handleSubmit={handleSubmit}
+              title={title}
+              setTitle={setTitle}
+              author={author}
+              setAuthor={setAuthor}
+              blogCategory={blogCategory}
+              setBlogCategory={setBlogCategory}
+              body={body}
+              setBody={setBody}
+              isPending={isLoading}
+              setIsDate={setIsDate}
+              date1={date}
+              setImageFile={setImageFile}
             />
         </div>
 

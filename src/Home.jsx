@@ -19,7 +19,13 @@ query GetBlogs {
         author,
         title,
         body,
-        image,
+        image{
+          data{
+            attributes{
+              url
+            }
+          }
+        },
         categories{
           data{
             attributes{
@@ -36,7 +42,7 @@ query GetBlogs {
   // alert state that changes the activeness of the login to add blog alert 
   const [Alert, setAlert] = useState(true)
   
-  // const { data:blogs,isPending,error}= useFetch("https://nordic-rose-backend-production.up.railway.app/api/blogs")
+    console.log(data)
 
  
   useEffect(() => {

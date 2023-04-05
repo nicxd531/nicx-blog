@@ -2,7 +2,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import moment from "moment/moment";
 
-const Form1 = ({handleSubmit,title,setTitle,author,setAuthor,blogCategory,setBlogCategory,body,setBody,isPending,setIsDate,date1}) => {
+const Form1 = ({handleSubmit,title,setTitle,author,setAuthor,body,setBody,isPending,setIsDate,date1,handleCheckboxChange,checkedValues,setImageFile}) => {
 
 //   moment.js library used for getting present time inwhich the blog was sent 
 const nowDate = moment().format('MMMM Do YYYY, h:mm:ss a');
@@ -34,33 +34,29 @@ const nowDate = moment().format('MMMM Do YYYY, h:mm:ss a');
                     type="text" 
                     placeholder="blog title" />
                 </FloatingLabel>
+                <Form.Group controlId="formFileSm" className="mb-3">
+                    <Form.Label>Small file input example</Form.Label>
+                    <Form.Control
+                     type="file" 
+                     size="sm" 
+                     onChange={(e)=>setImageFile(e.target.value)}
+                     />
+                </Form.Group>
                 <input 
-                required
-                value={date1}
-                onChange={(e)=>setIsDate(e.target.value)}
-                type='date'/>
-                <Form.Select 
-                className="mt-4"
-                value={blogCategory}
-                onChange={(e)=>setBlogCategory(e.target.value)}
-                aria-label="Default select example">
-                    <option value="React">React</option>
-                    <option value="Javascript">Javascript</option>
-                    <option value="Html">Html</option>
-                    <option value="Css">Css</option>
-                    <option value="BootStrap">BootStrap</option>
-                    <option value="Git">Git</option>
-                    <option value="Github">Github</option>
-                </Form.Select>
+                    required
+                    value={date1}
+                    onChange={(e)=>setIsDate(e.target.value)}
+                    type='date'
+                />
                 <div>
-                    <label>other categories</label>
-                    <div key={`inline-checkbox`} className="d-flex flex-row "  onChange={(e)=>setBlogCategory(e.target.value)}>
+                    <label>categories</label>
+                    <div key={`inline-checkbox`} className="d-flex flex-row " onChange={handleCheckboxChange}>
                         <Form.Check
                             className="d-flex  justify-content-around ms-3 align-items-center"
                             inline
                             label="React"
                             name="group1"
-                            value="React"
+                            value="1"
                             type="checkbox"
                             id={`inline-checkbox-1`}
                         />
@@ -69,14 +65,14 @@ const nowDate = moment().format('MMMM Do YYYY, h:mm:ss a');
                             inline
                             label="Javascript"
                             name="group1"
-                            value="Javascript"
+                            value="2"
                             type="checkbox"
                             id={`inline-checkbox-2`}
                         />
                         <Form.Check
                             className="d-flex justify-content-center ms-2 align-items-center"
                             inline
-                            value="Html"
+                            value="3"
                             label="Html"
                             name="group1"
                             type="checkbox"
@@ -87,7 +83,7 @@ const nowDate = moment().format('MMMM Do YYYY, h:mm:ss a');
                             inline
                             label="Css"
                             name="group1"
-                            value="Css"
+                            value="4"
                             type="checkbox"
                             id={`inline-checkbox-3`}
                         />
